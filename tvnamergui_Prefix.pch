@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'tvnamergui' target in the 'tvnamergui' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
