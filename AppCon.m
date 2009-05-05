@@ -21,8 +21,9 @@
 }
 
 -(IBAction) rename: (id)sender{
+    NSLog(@"%@", theFiles);
     for(id cur_file in theFiles){
-        NSLog(@"%@", cur_file);
+        //NSLog(@"%@", cur_file);
     }
 }
 

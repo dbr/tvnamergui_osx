@@ -1,5 +1,4 @@
 #import "TableListCon.h"
-#import "AppCon.h"
 
 @implementation TableListCon
 - (void)awakeFromNib
@@ -39,7 +38,13 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
         for(id file in files)
         {
-            NSLog(@"%@", file);
+            NSMutableDictionary *cfile = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                          file, @"filename", 
+                                          [NSNumber numberWithBool:YES], @"rename",
+                                          [NSURL URLWithString:@""], @"path",
+                                          nil];
+            NSLog(@"%@", cfile);
+            [[ArrayCon mutableArrayValueForKey:@"content"] addObject:cfile];
         }
     }
 
