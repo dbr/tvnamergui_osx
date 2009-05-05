@@ -4,8 +4,7 @@
 - (void)awakeFromNib
 {
     [tableView setDraggingSourceOperationMask:NSDragOperationLink forLocal:NO];
-    [tableView setDraggingSourceOperationMask:(NSDragOperationCopy |
-                                               NSDragOperationMove) forLocal:YES];
+    [tableView setDraggingSourceOperationMask:(NSDragOperationCopy | NSDragOperationMove) forLocal:YES];
     [tableView registerForDraggedTypes:[NSArray arrayWithObjects:
                                         NSFilenamesPboardType, nil]];
     [tableView setAllowsMultipleSelection:YES];
@@ -29,13 +28,12 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
 
 -(void)addFileToList:(NSString*)path
 {
-    NSLog(@"addFile %@", path);
     NSArray *components = [path pathComponents];
     NSString *filename = [components lastObject];
     
     // Generate dict of new file
     NSMutableDictionary *cfile = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  filename, @"filename", 
+                                  filename, @"filename",
                                   [NSNumber numberWithBool:YES], @"rename",
                                   path, @"path",
                                   nil];
@@ -53,14 +51,14 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     {
         if ([[[pname pathComponents] lastObject] hasPrefix:@"."])
         {
-            /* hidden dot-file/folder, skip this and sub-dirs */
+            // hidden dot-file/folder, skip this and sub-dirs
             [direnum skipDescendents];
         }
         else
         {
             [self addFileToList:pname];
         }
-    }    
+    }
 }
 
 - (BOOL)tableView:(NSTableView*)tv
