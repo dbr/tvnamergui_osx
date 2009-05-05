@@ -51,9 +51,9 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     NSString *pname;
     while (pname = [direnum nextObject])
     {
-        if ([[pname pathExtension] isEqualToString:@"DS_Store"])
+        if ([[[pname pathComponents] lastObject] hasPrefix:@"."])
         {
-            /* don't enumerate this directory */
+            /* hidden dot-file/folder, skip this and sub-dirs */
             [direnum skipDescendents];
         }
         else
@@ -74,13 +74,16 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
         NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
         for(id file in files)
         {
-            if(YES)
-                [self addFileToList:file];
-            else
+            BOOL isDir;
+            if([[NSFileManager defaultManager]
+                fileExistsAtPath:file isDirectory:&isDir] && isDir){
                 [self addDirectoryToList:file];
+                
+            }else{
+                [self addFileToList:file];
+            }
         }
     
-        NSLog(@"Hail Atlanta");
         // Done all files
         return YES;
     }
