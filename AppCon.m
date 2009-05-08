@@ -2,7 +2,7 @@
 
 @implementation AppCon
 
--(void)init{
+-(id)init{
     if(self = [super init]){
         theFiles = [NSMutableArray arrayWithObjects:
                     [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -17,7 +17,12 @@
                      nil],
                     nil
         ];
+        return self;
     }
+    else {
+        return nil;
+    }
+
 }
 
 -(IBAction) rename: (id)sender{
