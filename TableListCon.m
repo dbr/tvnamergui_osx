@@ -74,14 +74,12 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
         {
             BOOL isDir;
             if([[NSFileManager defaultManager]
-                fileExistsAtPath:file isDirectory:&isDir] && isDir){
+                fileExistsAtPath:file isDirectory:&isDir] && isDir)
                 [self addDirectoryToList:file];
-                
-            }else{
+            else
                 [self addFileToList:file];
-            }
         }
-    
+        
         // Done all files
         return YES;
     }
