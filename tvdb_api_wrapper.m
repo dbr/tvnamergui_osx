@@ -26,7 +26,7 @@
     return result;
 }
 
--(NSDictionary*)parseName:(NSString*)name
+-(NSMutableDictionary*)parseName:(NSString*)name
 {
     Py_Initialize();
     PyObject *module = [self importModule:@"tvnamer"];
