@@ -10,6 +10,7 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		678AC3FA0FAE38620081A56B /* AppCon.m in Sources */ = {isa = PBXBuildFile; fileRef = 678AC3F90FAE38620081A56B /* AppCon.m */; };
 		679EEB150FB50AD2004BB1C3 /* tvdb_api_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679EEB140FB50AD2004BB1C3 /* tvdb_api_wrapper.m */; };
+		679EEC5C0FB60044004BB1C3 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679EEC5B0FB60044004BB1C3 /* Python.framework */; };
 		67B1CA750FAF8D7D002A654F /* TableListCon.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B1CA740FAF8D7D002A654F /* TableListCon.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -29,6 +30,7 @@
 		678AC3F90FAE38620081A56B /* AppCon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCon.m; sourceTree = "<group>"; };
 		679EEB130FB50AD2004BB1C3 /* tvdb_api_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tvdb_api_wrapper.h; sourceTree = "<group>"; };
 		679EEB140FB50AD2004BB1C3 /* tvdb_api_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tvdb_api_wrapper.m; sourceTree = "<group>"; };
+		679EEC5B0FB60044004BB1C3 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = /System/Library/Frameworks/Python.framework; sourceTree = "<absolute>"; };
 		67B1CA730FAF8D7D002A654F /* TableListCon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableListCon.h; sourceTree = "<group>"; };
 		67B1CA740FAF8D7D002A654F /* TableListCon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableListCon.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				679EEC5C0FB60044004BB1C3 /* Python.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +123,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				679EEC5B0FB60044004BB1C3 /* Python.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
