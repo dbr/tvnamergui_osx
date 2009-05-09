@@ -56,6 +56,7 @@
         
         [ret setObject:value forKey:key];
     }
+    Py_Finalize();
     return ret;
 }
 
