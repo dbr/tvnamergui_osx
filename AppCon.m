@@ -16,6 +16,7 @@
 
 -(IBAction) rename: (id)sender{
     tvdb_api_wrapper *api = [[tvdb_api_wrapper alloc] init];
+    [api autorelease];
     
     for(id cur_file in theFiles){
         NSMutableDictionary *parsed_name = [api parseName:

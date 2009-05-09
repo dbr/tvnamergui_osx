@@ -53,6 +53,12 @@
         {
             value = [NSNumber numberWithLong:PyInt_AsLong(cur_value)];
         }
+        else
+        {
+            NSLog(@"WARNING: value for %@ was not string or integer, using repr()", key);
+            value = [NSString stringWithUTF8String:
+                     PyString_AsString(PyObject_Repr(cur_value))];
+        }
         
         [ret setObject:value forKey:key];
     }
