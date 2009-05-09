@@ -55,24 +55,6 @@
     return ret;
 }
 
--(NSMutableDictionary*)parseName:(NSString*)name
-{
-    Py_Initialize();
-    PyObject *module = [self importModule:@"tvnamer"];
-    PyObject *valid_name = [self callMethod:@"processSingleName"
-                                  fromModule:module
-                                    withArgs:[NSArray arrayWithObjects:name, nil]];
-    if(valid_name == Py_None){
-        NSLog(@"Not found!");
-        return nil;
-    }
-    
-    NSMutableDictionary *ret = [self pyDictToNSDict:valid_name];
-    
-    Py_Finalize();
-    return ret;
-}
-
 -(NSNumber*)getSeriesId:(NSString*)seriesName
 {
     PyObject *module = [self importModule:@"tvdb_api"];
@@ -84,6 +66,24 @@
     NSMutableDictionary *showinfo = [self pyDictToNSDict:py_showinfo];
     NSLog(@"%@", showinfo);
     return [showinfo objectForKey:@"sid"];
+}
+
+-(NSMutableDictionary*)parseName:(NSString*)name
+{
+    Py_Initialize();
+    PyObject *module = [self importModule:@"tvnamer"];
+    PyObject *valid_name = [self callMethod:@"processSingleName"
+                                 fromModule:module
+                                   withArgs:[NSArray arrayWithObjects:name, nil]];
+    if(valid_name == Py_None){
+        NSLog(@"Not found!");
+        return nil;
+    }
+    
+    NSMutableDictionary *ret = [self pyDictToNSDict:valid_name];
+    
+    Py_Finalize();
+    return ret;
 }
 
 -(NSString*)getEpisodeNameForSeries:(NSString*)seriesName
