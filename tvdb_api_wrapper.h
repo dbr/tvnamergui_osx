@@ -5,7 +5,8 @@
 }
 
 -(NSMutableDictionary*) parseName:(NSString*)name;
--(NSString*) getEpisodeName:(NSNumber*)seasno
-                               :(NSNumber*)epno
-                               :(NSNumber*)sid;
+-(NSString*)getEpisodeNameForSeries:(NSString*)seriesName
+                             seasno:(NSNumber*)seasno
+                               epno:(NSNumber*)epno;
+                
 @end

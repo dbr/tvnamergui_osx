@@ -60,10 +60,17 @@
     return ret;
 }
 
--(NSString*)getEpisodeName:(NSNumber*)seasno
-                   :(NSNumber*)epno
-                   :(NSNumber*)sid
+-(NSNumber*)getSeriesId:(NSString*)seriesName
 {
+    return [NSNumber numberWithInt:-1];
+}
+
+-(NSString*)getEpisodeNameForSeries:(NSString*)seriesName
+                             seasno:(NSNumber*)seasno
+                               epno:(NSNumber*)epno
+{
+    NSNumber *sid = [self getSeriesId:seriesName];
+    NSLog(@"Got series ID of %@", sid);
     return [NSString string];
 }
 
