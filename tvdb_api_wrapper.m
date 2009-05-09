@@ -26,27 +26,17 @@
     return result;
 }
 
--(NSMutableDictionary*)parseName:(NSString*)name
+-(NSMutableDictionary*)pyDictToNSDict:(PyObject*)thePyDict
 {
-    Py_Initialize();
-    PyObject *module = [self importModule:@"tvnamer"];
-    PyObject *valid_name = [self callMethod:@"processSingleName"
-                                  fromModule:module
-                                    withArgs:[NSArray arrayWithObjects:name, nil]];
-    if(valid_name == Py_None){
-        NSLog(@"Not found!");
-        return nil;
-    }
-    
     NSMutableDictionary *ret = [NSMutableDictionary dictionary];
     
     PyObject *cur_key, *cur_value;
     Py_ssize_t pos = 0;
     
-    while(PyDict_Next(valid_name, &pos, &cur_key, &cur_value)){
+    while(PyDict_Next(thePyDict, &pos, &cur_key, &cur_value)){
         NSString *key = [NSString stringWithUTF8String:PyString_AsString(cur_key)];
         id value;
-        if(PyString_Check(cur_value)){
+        if(PyString_Check(cur_value) || PyUnicode_Check(cur_value)){
             value = [NSString stringWithUTF8String:PyString_AsString(cur_value)];    
         }
         else if(PyInt_Check(cur_value))
@@ -62,21 +52,48 @@
         
         [ret setObject:value forKey:key];
     }
+    return ret;
+}
+
+-(NSMutableDictionary*)parseName:(NSString*)name
+{
+    Py_Initialize();
+    PyObject *module = [self importModule:@"tvnamer"];
+    PyObject *valid_name = [self callMethod:@"processSingleName"
+                                  fromModule:module
+                                    withArgs:[NSArray arrayWithObjects:name, nil]];
+    if(valid_name == Py_None){
+        NSLog(@"Not found!");
+        return nil;
+    }
+    
+    NSMutableDictionary *ret = [self pyDictToNSDict:valid_name];
+    
     Py_Finalize();
     return ret;
 }
 
 -(NSNumber*)getSeriesId:(NSString*)seriesName
 {
-    return [NSNumber numberWithInt:-1];
+    PyObject *module = [self importModule:@"tvdb_api"];
+    PyObject *tvdb_api = PyObject_GetAttrString(module, "Tvdb");
+    PyObject *tvdb = PyInstance_New(tvdb_api, nil, nil);
+    PyObject *py_showinfo = [self callMethod:@"_getSeries"
+                                  fromModule:tvdb
+                                    withArgs:[NSArray arrayWithObjects:@"scrubs", nil]];
+    NSMutableDictionary *showinfo = [self pyDictToNSDict:py_showinfo];
+    NSLog(@"%@", showinfo);
+    return [showinfo objectForKey:@"sid"];
 }
 
 -(NSString*)getEpisodeNameForSeries:(NSString*)seriesName
                              seasno:(NSNumber*)seasno
                                epno:(NSNumber*)epno
 {
+    Py_Initialize();
     NSNumber *sid = [self getSeriesId:seriesName];
     NSLog(@"Got series ID of %@", sid);
+    Py_Finalize();
     return [NSString string];
 }
 
