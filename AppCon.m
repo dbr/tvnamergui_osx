@@ -18,7 +18,9 @@
     NSLog(@"%@", theFiles);
     tvdb_api_wrapper *api = [[tvdb_api_wrapper alloc] init];
     for(id cur_file in theFiles){
-        //NSLog(@"%@", cur_file);
+        NSMutableDictionary *parsed_name = [api parseName:
+                                            [cur_file objectForKey:@"filename"]];
+        NSLog(@"%@", parsed_name);
     }
 }
 
