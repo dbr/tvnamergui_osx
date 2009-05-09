@@ -4,7 +4,7 @@
 
 -(id)init{
     if(self = [super init]){
-        theFiles = [NSMutableArray arrayWithObjects:
+        self.theFiles = [NSMutableArray arrayWithObjects:
                     [NSMutableDictionary dictionaryWithObjectsAndKeys:
                      @"test.s01e01.this.is.really.long.name.avi", @"filename",
                      [NSNumber numberWithBool:YES], @"rename",
