@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		678AC3FA0FAE38620081A56B /* AppCon.m in Sources */ = {isa = PBXBuildFile; fileRef = 678AC3F90FAE38620081A56B /* AppCon.m */; };
+		679EEB150FB50AD2004BB1C3 /* tvdb_api_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 679EEB140FB50AD2004BB1C3 /* tvdb_api_wrapper.m */; };
 		67B1CA750FAF8D7D002A654F /* TableListCon.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B1CA740FAF8D7D002A654F /* TableListCon.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -26,6 +27,8 @@
 		32CA4F630368D1EE00C91783 /* tvnamergui_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tvnamergui_Prefix.pch; sourceTree = "<group>"; };
 		678AC3F80FAE38620081A56B /* AppCon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCon.h; sourceTree = "<group>"; };
 		678AC3F90FAE38620081A56B /* AppCon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCon.m; sourceTree = "<group>"; };
+		679EEB130FB50AD2004BB1C3 /* tvdb_api_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tvdb_api_wrapper.h; sourceTree = "<group>"; };
+		679EEB140FB50AD2004BB1C3 /* tvdb_api_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tvdb_api_wrapper.m; sourceTree = "<group>"; };
 		67B1CA730FAF8D7D002A654F /* TableListCon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableListCon.h; sourceTree = "<group>"; };
 		67B1CA740FAF8D7D002A654F /* TableListCon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableListCon.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				679EEB130FB50AD2004BB1C3 /* tvdb_api_wrapper.h */,
+				679EEB140FB50AD2004BB1C3 /* tvdb_api_wrapper.m */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -179,6 +184,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				678AC3FA0FAE38620081A56B /* AppCon.m in Sources */,
 				67B1CA750FAF8D7D002A654F /* TableListCon.m in Sources */,
+				679EEB150FB50AD2004BB1C3 /* tvdb_api_wrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
