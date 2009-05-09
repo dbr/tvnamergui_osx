@@ -44,10 +44,10 @@
     Py_ssize_t pos = 0;
     
     while(PyDict_Next(valid_name, &pos, &cur_key, &cur_value)){
-        NSString *key = [NSString stringWithCString:PyString_AsString(cur_key)];
+        NSString *key = [NSString stringWithUTF8String:PyString_AsString(cur_key)];
         id value;
         if(PyString_Check(cur_value)){
-            value = [NSString stringWithCString:PyString_AsString(cur_value)];    
+            value = [NSString stringWithUTF8String:PyString_AsString(cur_value)];    
         }
         else if(PyInt_Check(cur_value))
         {
