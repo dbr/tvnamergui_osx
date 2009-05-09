@@ -26,13 +26,13 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     return dragOp;
 }
 
--(void)addFileToList:(NSString*)path
+- (void)addFileToList:(NSString*)path
 {
     NSArray *components = [path pathComponents];
     NSString *filename = [components lastObject];
     
     // Generate dict of new file
-    NSMutableDictionary *cfile = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *cfile = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   filename, @"filename",
                                   [NSNumber numberWithBool:YES], @"rename",
                                   path, @"path",
@@ -42,7 +42,7 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     [ArrayCon addObject:cfile];
 }
 
--(void)addDirectoryToList:(NSString*)path
+- (void)addDirectoryToList:(NSString*)path
 {
     NSDirectoryEnumerator *direnum = [[NSFileManager defaultManager]
                                       enumeratorAtPath:path];
