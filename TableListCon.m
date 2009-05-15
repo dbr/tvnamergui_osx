@@ -1,4 +1,5 @@
 #import "TableListCon.h"
+#import "tvdb_api_wrapper.h"
 
 @implementation TableListCon
 - (void)awakeFromNib
@@ -29,14 +30,58 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
 - (void)addFileToList:(NSString*)path
 {
     NSArray *components = [path pathComponents];
-    NSString *filename = [components lastObject];
+    NSString *old_filename = [components lastObject];
+    
+    tvdb_api_wrapper *api = [[tvdb_api_wrapper alloc] init];
+    [api autorelease];
+    
+    // Parse name, get: series_filename, seasno, epno
+    NSMutableDictionary *parsed_name = [api parseName:old_filename];
+    if(!parsed_name) return; // Invalid filename
+    
+    NSMutableDictionary *seriesinfo = [api getSeriesId:[parsed_name objectForKey:@"file_seriesname"]];
+    NSLog(@"Got series %@ with ID %@",
+          [seriesinfo objectForKey:@"name"],
+          [seriesinfo objectForKey:@"sid"]);
+    
+    NSString *epname = [api getEpNameForSid:
+                        [NSNumber numberWithLong:[[seriesinfo objectForKey:@"sid"] doubleValue]]
+                                     seasno:[parsed_name objectForKey:@"seasno"]
+                                       epno:[parsed_name objectForKey:@"epno"]];
+    NSString *new_filename;
+    
+    if(epname){
+        NSLog(@"Got episode name: %@", epname);
+        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d] - %@",
+                        [seriesinfo objectForKey:@"name"],
+                        [[parsed_name objectForKey:@"seasno"] intValue],
+                        [[parsed_name objectForKey:@"epno"] intValue],
+                        epname
+                        ];
+    }
+    else
+    {
+        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d]",
+                        [parsed_name objectForKey:@"file_seriesname"],
+                        [[parsed_name objectForKey:@"seasno"] intValue],
+                        [[parsed_name objectForKey:@"epno"] intValue],
+                        epname
+                        ];
+        
+    }
+    
+    NSString *displaystr = [NSString stringWithFormat:@"Old: %@\nNew: %@",
+                            old_filename,
+                            new_filename
+    ];
     
     // Generate dict of new file
     NSDictionary *cfile = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  filename, @"filename",
-                                  [NSNumber numberWithBool:YES], @"rename",
-                                  path, @"path",
-                                  nil];
+                           displaystr, @"displaystr",
+                           [NSNumber numberWithBool:YES], @"rename",
+                           path, @"path",
+                           parsed_name, @"parsed_name",
+                           nil];
     
     // Add it to the tableView's array controller
     [ArrayCon addObject:cfile];
@@ -66,6 +111,9 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
               row:(int)row
     dropOperation:(NSTableViewDropOperation)op
 {
+    [busy setHidden:NO];
+    [busy startAnimation:self];
+    
     NSPasteboard *pboard = [info draggingPasteboard];
     if([[pboard types] containsObject:NSFilenamesPboardType])
     {
@@ -81,9 +129,13 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
         }
         
         // Done all files
+        [busy setHidden:YES];
+        [busy stopAnimation:self];
         return YES;
     }
     
+    [busy setHidden:YES];
+    [busy stopAnimation:self];
     return NO;
 }
 @end

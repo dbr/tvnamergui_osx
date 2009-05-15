@@ -14,18 +14,20 @@
 
 }
 
--(IBAction) rename: (id)sender{
+-(IBAction)rename:(id)sender{
+    [busy setHidden:NO];
+    [busy startAnimation:self];
+    
     tvdb_api_wrapper *api = [[tvdb_api_wrapper alloc] init];
     [api autorelease];
     
     for(id cur_file in theFiles){
-        NSMutableDictionary *parsed_name = [api parseName:
-                                            [cur_file objectForKey:@"filename"]];
-        NSString *epname = [api getEpisodeNameForSeries:[parsed_name objectForKey:@"file_seriesname"]
-                                                 seasno:[parsed_name objectForKey:@"seasno"]
-                                                   epno:[parsed_name objectForKey:@"epno"]];
-        NSLog(@"%@", parsed_name);
+        NSString *epname;
+        
         NSLog(@"%@", epname);
+        
+        [busy setHidden:YES];
+        [busy stopAnimation:self];
     }
 }
 
