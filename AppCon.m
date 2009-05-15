@@ -22,9 +22,7 @@
     [api autorelease];
     
     for(id cur_file in theFiles){
-        NSString *epname;
-        
-        NSLog(@"%@", epname);
+        NSLog(@"%@", cur_file);
         
         [busy setHidden:YES];
         [busy stopAnimation:self];
