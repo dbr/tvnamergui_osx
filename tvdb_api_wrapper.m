@@ -5,6 +5,8 @@
 
 -(PyObject*)importModule:(NSString*)name
 {
+    /* Imports a Python module
+     */
     PyObject *module = PyImport_Import(PyString_FromString([name UTF8String]));
     return module;
 }
@@ -13,6 +15,9 @@
             fromModule:(PyObject*)module
               withArgs:(NSArray*)args
 {
+    /* Takes a method (from importModule) and calls a method on it,
+     * takes an array with arguments
+     */
     PyObject *thefunc = PyObject_GetAttrString(module, [method UTF8String]);
     NSInteger num_args = [args count];
     PyObject *arg_tuple = PyTuple_New(num_args);
@@ -28,6 +33,9 @@
 
 -(NSMutableDictionary*)pyDictToNSDict:(PyObject*)thePyDict
 {
+    /* Takes a PyObject dictionary, turns it into a NSMutableDictionary.
+     * Currently only handles str/unicode/integer data-types
+     */
     NSMutableDictionary *ret = [NSMutableDictionary dictionary];
     
     PyObject *cur_key, *cur_value;
@@ -56,7 +64,11 @@
 }
 
 -(NSNumber*)getSeriesId:(NSString*)seriesName
+
+/* Public'ish  methods */
+
 {
+    /* Takes a series name, returns the series ID and name in dictionary */
     PyObject *module = [self importModule:@"tvdb_api"];
     PyObject *tvdb_api = PyObject_GetAttrString(module, "Tvdb");
     PyObject *tvdb = PyInstance_New(tvdb_api, nil, nil);
