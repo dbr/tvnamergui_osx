@@ -136,9 +136,28 @@
             withArgs:[NSArray arrayWithObject:sid]];
     
     PyObject *season = PyObject_GetItem(show, PyInt_FromLong([seasno longValue]));
+    if(!season){
+        Py_Finalize();
+        NSLog(@"Panic, season is null");
+        return nil;
+    }
+    
     PyObject *episode = PyObject_GetItem(season, PyInt_FromLong([epno longValue]));
+    if(!episode){
+        Py_Finalize();
+        NSLog(@"Panic, episode is null");
+        return nil;
+    };
+    
     PyObject *attr = PyObject_GetItem(episode, PyString_FromString("episodename"));
+    if(!attr){
+        Py_Finalize();
+        NSLog(@"Panic, attr is null");
+        return nil;
+    }
+    
     NSString *epname = [NSString stringWithUTF8String:PyString_AsString(attr)];
+
     Py_Finalize();
     return epname;
 }
