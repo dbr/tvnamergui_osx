@@ -80,6 +80,8 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
                            displaystr, @"displaystr",
                            [NSNumber numberWithBool:YES], @"rename",
                            path, @"path",
+                           old_filename, @"old_filename",
+                           new_filename, @"new_filename",
                            parsed_name, @"parsed_name",
                            nil];
     
