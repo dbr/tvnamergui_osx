@@ -2,6 +2,7 @@
 
 @interface AppCon : NSObject {
     NSMutableArray *theFiles;
+    IBOutlet NSProgressIndicator *busy;
 }
 
 -(IBAction)rename: (id)sender;
