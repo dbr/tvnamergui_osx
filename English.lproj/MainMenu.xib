@@ -368,13 +368,13 @@
 			<object class="NSWindowTemplate" id="972006081">
 				<int key="NSWindowStyleMask">271</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{335, 440}, {204, 310}}</string>
+				<string key="NSWindowRect">{{136, 471}, {300, 310}}</string>
 				<int key="NSWTFlags">1946157056</int>
 				<string key="NSWindowTitle">TVNamer</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
-				<string key="NSWindowContentMaxSize">{10000, 10000}</string>
-				<string key="NSWindowContentMinSize">{204, 310}</string>
+				<string key="NSWindowContentMaxSize">{2000, 2000}</string>
+				<string key="NSWindowContentMinSize">{200, 310}</string>
 				<object class="NSView" key="NSWindowView" id="439893737">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -383,7 +383,7 @@
 						<object class="NSButton" id="876826296">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">258</int>
-							<string key="NSFrame">{{5, 6}, {194, 25}}</string>
+							<string key="NSFrame">{{5, 6}, {290, 25}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="746390560">
@@ -606,26 +606,26 @@
 										<object class="NSTableView" id="904019898">
 											<reference key="NSNextResponder" ref="463149905"/>
 											<int key="NSvFlags">256</int>
-											<string key="NSFrameSize">{186, 257}</string>
+											<string key="NSFrameSize">{282, 257}</string>
 											<reference key="NSSuperview" ref="463149905"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTableHeaderView" key="NSHeaderView" id="273322409">
 												<reference key="NSNextResponder" ref="746843813"/>
 												<int key="NSvFlags">256</int>
-												<string key="NSFrameSize">{186, 17}</string>
+												<string key="NSFrameSize">{282, 17}</string>
 												<reference key="NSSuperview" ref="746843813"/>
 												<reference key="NSTableView" ref="904019898"/>
 											</object>
 											<object class="_NSCornerView" key="NSCornerView" id="159728776">
 												<reference key="NSNextResponder" ref="1044540584"/>
 												<int key="NSvFlags">256</int>
-												<string key="NSFrame">{{187, 0}, {16, 17}}</string>
+												<string key="NSFrame">{{283, 0}, {16, 17}}</string>
 												<reference key="NSSuperview" ref="1044540584"/>
 											</object>
 											<object class="NSMutableArray" key="NSTableColumns">
 												<bool key="EncodedWithXMLCoder">YES</bool>
 												<object class="NSTableColumn" id="146104213">
-													<double key="NSWidth">1.400000e+02</double>
+													<double key="NSWidth">2.360000e+02</double>
 													<double key="NSMinWidth">1.400000e+02</double>
 													<double key="NSMaxWidth">9.000000e+03</double>
 													<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -706,7 +706,7 @@
 											<bool key="NSAllowsTypeSelect">YES</bool>
 										</object>
 									</object>
-									<string key="NSFrame">{{1, 17}, {186, 257}}</string>
+									<string key="NSFrame">{{1, 17}, {282, 257}}</string>
 									<reference key="NSSuperview" ref="1044540584"/>
 									<reference key="NSNextKeyView" ref="904019898"/>
 									<reference key="NSDocView" ref="904019898"/>
@@ -716,7 +716,7 @@
 								<object class="NSScroller" id="147811370">
 									<reference key="NSNextResponder" ref="1044540584"/>
 									<int key="NSvFlags">256</int>
-									<string key="NSFrame">{{187, 17}, {15, 257}}</string>
+									<string key="NSFrame">{{283, 17}, {15, 257}}</string>
 									<reference key="NSSuperview" ref="1044540584"/>
 									<reference key="NSTarget" ref="1044540584"/>
 									<string key="NSAction">_doScroller:</string>
@@ -740,7 +740,7 @@
 										<bool key="EncodedWithXMLCoder">YES</bool>
 										<reference ref="273322409"/>
 									</object>
-									<string key="NSFrame">{{1, 0}, {186, 17}}</string>
+									<string key="NSFrame">{{1, 0}, {282, 17}}</string>
 									<reference key="NSSuperview" ref="1044540584"/>
 									<reference key="NSNextKeyView" ref="273322409"/>
 									<reference key="NSDocView" ref="273322409"/>
@@ -749,7 +749,7 @@
 								</object>
 								<reference ref="159728776"/>
 							</object>
-							<string key="NSFrame">{{0, 36}, {203, 275}}</string>
+							<string key="NSFrame">{{0, 36}, {299, 275}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSNextKeyView" ref="463149905"/>
 							<int key="NSsFlags">18</int>
@@ -771,12 +771,12 @@
 							<double key="NSMaxValue">1.000000e+02</double>
 						</object>
 					</object>
-					<string key="NSFrameSize">{204, 310}</string>
+					<string key="NSFrameSize">{300, 310}</string>
 					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
-				<string key="NSMinSize">{204, 332}</string>
-				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
+				<string key="NSMinSize">{200, 332}</string>
+				<string key="NSMaxSize">{2000, 2022}</string>
 			</object>
 			<object class="NSCustomObject" id="755631768">
 				<string key="NSClassName">NSFontManager</string>
@@ -1714,15 +1714,15 @@
 					<reference ref="9"/>
 					<string>{74, 862}</string>
 					<string>{{6, 978}, {478, 20}}</string>
-					<string>{{84, 508}, {204, 310}}</string>
+					<string>{{75, 493}, {300, 310}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{84, 508}, {204, 310}}</string>
+					<string>{{75, 493}, {300, 310}}</string>
 					<reference ref="9"/>
 					<string>{{33, 99}, {480, 360}}</string>
-					<integer value="0"/>
+					<integer value="1"/>
 					<reference ref="9"/>
-					<string>{204, 2000}</string>
-					<string>{204, 310}</string>
+					<string>{2000, 2000}</string>
+					<string>{200, 310}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
