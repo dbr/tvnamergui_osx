@@ -40,7 +40,7 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     if(!parsed_name) return; // Invalid filename
     
     NSMutableDictionary *seriesinfo = [api getSeriesId:[parsed_name objectForKey:@"file_seriesname"]];
-    NSLog(@"Got series %@ with ID %@",
+    DebugLog(@"Got series %@ with ID %@",
           [seriesinfo objectForKey:@"name"],
           [seriesinfo objectForKey:@"sid"]);
     
@@ -48,24 +48,28 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
                         [NSNumber numberWithLong:[[seriesinfo objectForKey:@"sid"] doubleValue]]
                                      seasno:[parsed_name objectForKey:@"seasno"]
                                        epno:[parsed_name objectForKey:@"epno"]];
+    NSString *extention = [parsed_name objectForKey:@"ext"];
+    
     NSString *new_filename;
     
     if(epname){
-        NSLog(@"Got episode name: %@", epname);
-        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d] - %@",
+        DebugLog(@"Got episode name: %@", epname);
+        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d] - %@.%@",
                         [seriesinfo objectForKey:@"name"],
                         [[parsed_name objectForKey:@"seasno"] intValue],
                         [[parsed_name objectForKey:@"epno"] intValue],
-                        epname
+                        epname,
+                        extention
                         ];
     }
     else
     {
-        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d]",
+        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d].%@",
                         [parsed_name objectForKey:@"file_seriesname"],
                         [[parsed_name objectForKey:@"seasno"] intValue],
                         [[parsed_name objectForKey:@"epno"] intValue],
-                        epname
+                        epname,
+                        extention
                         ];
         
     }
