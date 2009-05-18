@@ -17,17 +17,15 @@
     [api autorelease];
     
     for(id cur_file in theFiles){
+        // Skip unselected files
         if([[cur_file objectForKey:@"rename"] isEqualTo:[NSNumber numberWithBool:NO]])
-        {
-            DebugLog(@"Skipping file %@", [cur_file objectForKey:@"old_filename"]);
             continue;
-        }
         
         NSString *old_filepath = [cur_file objectForKey:@"path"];
         NSString *new_filename = [cur_file objectForKey:@"new_filename"];
         
         NSString *new_filepath = [[old_filepath stringByDeletingLastPathComponent]
-                        stringByAppendingPathComponent:new_filename];
+                                  stringByAppendingPathComponent:new_filename];
 
         
         DebugLog(@"Renaming..\n%@\n..to..\n%@", old_filepath, new_filepath);
