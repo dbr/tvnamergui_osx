@@ -29,8 +29,7 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
 
 - (void)addFileToList:(NSString*)path
 {
-    NSArray *components = [path pathComponents];
-    NSString *old_filename = [components lastObject];
+    NSString *old_filename = [[path pathComponents] lastObject];
     
     tvdb_api_wrapper *api = [[tvdb_api_wrapper alloc] init];
     [api autorelease];
