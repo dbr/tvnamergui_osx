@@ -3,15 +3,10 @@
 
 @implementation AppCon
 
--(id)init{
-    if(self = [super init]){
-        self.theFiles = [NSMutableArray array];
-        return self;
-    }
-    else {
-        return nil;
-    }
-
+-(void)awakeFromNib
+{
+    // Set TableList's array to blank array
+    self.theFiles = [NSMutableArray array];
 }
 
 -(IBAction)rename:(id)sender{
