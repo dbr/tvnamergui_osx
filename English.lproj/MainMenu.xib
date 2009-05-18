@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="372"/>
 			<integer value="29"/>
+			<integer value="463"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -787,6 +787,7 @@
 					<string>filename</string>
 					<string>rename</string>
 					<string>displaystr</string>
+					<string>old_filename</string>
 				</object>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
@@ -983,22 +984,6 @@
 					<int key="connectionID">502</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: arrangedObjects.displaystr</string>
-						<reference key="source" ref="146104213"/>
-						<reference key="destination" ref="983445327"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="146104213"/>
-							<reference key="NSDestination" ref="983445327"/>
-							<string key="NSLabel">value: arrangedObjects.displaystr</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">arrangedObjects.displaystr</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">504</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">busy</string>
 						<reference key="source" ref="677518928"/>
@@ -1021,6 +1006,22 @@
 						<reference key="destination" ref="876826296"/>
 					</object>
 					<int key="connectionID">510</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.old_filename</string>
+						<reference key="source" ref="146104213"/>
+						<reference key="destination" ref="983445327"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="146104213"/>
+							<reference key="NSDestination" ref="983445327"/>
+							<string key="NSLabel">value: arrangedObjects.old_filename</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.old_filename</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">511</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1796,7 +1797,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">510</int>
+			<int key="maxID">511</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
