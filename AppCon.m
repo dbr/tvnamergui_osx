@@ -9,7 +9,7 @@
     self.theFiles = [NSMutableArray array];
 }
 
--(IBAction)rename:(id)sender{
+-(IBAction)renameFilesAction:(id)sender{
     [busy setHidden:NO];
     [busy startAnimation:self];
     

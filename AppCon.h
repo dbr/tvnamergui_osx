@@ -5,6 +5,6 @@
     IBOutlet NSProgressIndicator *busy;
 }
 
--(IBAction)rename: (id)sender;
+-(IBAction)renameFilesAction: (id)sender;
 @property (copy) NSMutableArray *theFiles;
 @end
