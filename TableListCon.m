@@ -41,8 +41,8 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     
     NSMutableDictionary *seriesinfo = [api getSeriesId:[parsed_name objectForKey:@"file_seriesname"]];
     DebugLog(@"Got series %@ with ID %@",
-          [seriesinfo objectForKey:@"name"],
-          [seriesinfo objectForKey:@"sid"]);
+             [seriesinfo objectForKey:@"name"],
+             [seriesinfo objectForKey:@"sid"]);
     
     NSString *epname = [api getEpNameForSid:
                         [NSNumber numberWithLong:[[seriesinfo objectForKey:@"sid"] doubleValue]]
