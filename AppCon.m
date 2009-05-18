@@ -9,6 +9,53 @@
     self.theFiles = [NSMutableArray array];
 }
 
+-(NSString*)getNewFileName:(NSString*)old_filename
+{
+    tvdb_api_wrapper *api = [[tvdb_api_wrapper alloc] init];
+    [api autorelease];
+    
+    // Parse name, get: series_filename, seasno, epno
+    NSMutableDictionary *parsed_name = [api parseName:old_filename];
+    if(!parsed_name) return nil; // Invalid filename
+    
+    NSMutableDictionary *seriesinfo = [api getSeriesId:[parsed_name objectForKey:@"file_seriesname"]];
+    DebugLog(@"Got series %@ with ID %@",
+             [seriesinfo objectForKey:@"name"],
+             [seriesinfo objectForKey:@"sid"]);
+    
+    NSString *epname = [api getEpNameForSid:
+                        [NSNumber numberWithLong:[[seriesinfo objectForKey:@"sid"] doubleValue]]
+                                     seasno:[parsed_name objectForKey:@"seasno"]
+                                       epno:[parsed_name objectForKey:@"epno"]];
+    NSString *extention = [parsed_name objectForKey:@"ext"];
+    
+    NSString *new_filename;
+    
+    if(epname){
+        DebugLog(@"Got episode name: %@", epname);
+        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d] - %@.%@",
+                        [seriesinfo objectForKey:@"name"],
+                        [[parsed_name objectForKey:@"seasno"] intValue],
+                        [[parsed_name objectForKey:@"epno"] intValue],
+                        epname,
+                        extention
+                        ];
+    }
+    else
+    {
+        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d].%@",
+                        [parsed_name objectForKey:@"file_seriesname"],
+                        [[parsed_name objectForKey:@"seasno"] intValue],
+                        [[parsed_name objectForKey:@"epno"] intValue],
+                        epname,
+                        extention
+                        ];
+        
+    }
+    
+    return new_filename;
+}
+
 -(IBAction)renameFilesAction:(id)sender{
     [busy setHidden:NO];
     [busy startAnimation:self];

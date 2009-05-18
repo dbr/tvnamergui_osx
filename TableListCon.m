@@ -27,65 +27,15 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     return dragOp;
 }
 
-- (void)addFileToList:(NSString*)path
+- (void)addFileToList:(NSString*)old_filepath
 {
-    NSString *old_filename = [[path pathComponents] lastObject];
-    
-    tvdb_api_wrapper *api = [[tvdb_api_wrapper alloc] init];
-    [api autorelease];
-    
-    // Parse name, get: series_filename, seasno, epno
-    NSMutableDictionary *parsed_name = [api parseName:old_filename];
-    if(!parsed_name) return; // Invalid filename
-    
-    NSMutableDictionary *seriesinfo = [api getSeriesId:[parsed_name objectForKey:@"file_seriesname"]];
-    DebugLog(@"Got series %@ with ID %@",
-             [seriesinfo objectForKey:@"name"],
-             [seriesinfo objectForKey:@"sid"]);
-    
-    NSString *epname = [api getEpNameForSid:
-                        [NSNumber numberWithLong:[[seriesinfo objectForKey:@"sid"] doubleValue]]
-                                     seasno:[parsed_name objectForKey:@"seasno"]
-                                       epno:[parsed_name objectForKey:@"epno"]];
-    NSString *extention = [parsed_name objectForKey:@"ext"];
-    
-    NSString *new_filename;
-    
-    if(epname){
-        DebugLog(@"Got episode name: %@", epname);
-        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d] - %@.%@",
-                        [seriesinfo objectForKey:@"name"],
-                        [[parsed_name objectForKey:@"seasno"] intValue],
-                        [[parsed_name objectForKey:@"epno"] intValue],
-                        epname,
-                        extention
-                        ];
-    }
-    else
-    {
-        new_filename = [NSString stringWithFormat:@"%@ - [%02dx%02d].%@",
-                        [parsed_name objectForKey:@"file_seriesname"],
-                        [[parsed_name objectForKey:@"seasno"] intValue],
-                        [[parsed_name objectForKey:@"epno"] intValue],
-                        epname,
-                        extention
-                        ];
-        
-    }
-    
-    NSString *displaystr = [NSString stringWithFormat:@"Old: %@\nNew: %@",
-                            old_filename,
-                            new_filename
-    ];
+    NSString *old_filename = [[old_filepath pathComponents] lastObject];
     
     // Generate dict of new file
     NSDictionary *cfile = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                           displaystr, @"displaystr",
-                           [NSNumber numberWithBool:YES], @"rename",
-                           path, @"path",
                            old_filename, @"old_filename",
-                           new_filename, @"new_filename",
-                           parsed_name, @"parsed_name",
+                           old_filepath, @"old_filepath",
+                           [NSNumber numberWithBool:YES], @"rename",
                            nil];
     
     // Add it to the tableView's array controller
